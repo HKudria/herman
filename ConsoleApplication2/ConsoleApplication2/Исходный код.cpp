@@ -7,6 +7,7 @@
 using namespace std;
 
 
+
 int main(int argc, char* argv[])
 {
 	int vubor;
@@ -17,27 +18,41 @@ int main(int argc, char* argv[])
 
 	if (vubor == 1)
 	{
-		int l, m;
-		std::cout << "Kol strok = ";
-		std::cin >> l;
-		std::cout << "Kol slolb = ";
-		std::cin >> m;
-		srand(time(0)); // генерация случайных чисел
-		// динамическое создание двумерного массива вещественных чисел на десять элементов
-		int **ptrarray = new int*[l]; // две строки в массиве
-		for (int count = 0; count < l; count++)
-			ptrarray[count] = new int[m]; // и пять столбцов
-		// заполнение массива
-		for (int count_row = 0; count_row < l; count_row++)
-		for (int count_column = 0; count_column < m; count_column++)
-			ptrarray[count_row][count_column] = (rand() % 10 + 1) / int((rand() % 10 + 1)); //заполнение массива случайными числами с масштабированием от 1 до 10
-		// вывод массива
-		for (int count_row = 0; count_row < l; count_row++)
+		setlocale(0, "");
+		srand(unsigned(time(NULL)));
+		int N, M;
+		cout << "Введите размер матрицы: ";
+		cin >> N >> M;
+		int ** A = new int *[N];
+		for (int i = 0; i < N; i++)
+			A[i] = new int[M];
+
+		for (int i = 0; i < N; i++)
+		for (int j = 0; j < M; j++)
+			A[i][j] = ((rand() % 10));
+
+
+		cout << "Вот Ваша матрица:" << endl ;
+		for (int i = 0; i < N; i++)
 		{
-			for (int count_column = 0; count_column < m; count_column++)
-				cout << setw(4) << setprecision(l) << ptrarray[count_row][count_column] << "   ";
+			for (int j = 0; j < M; j++)
+				cout << A[i][j] << " ";
 			cout << endl;
 		}
+
+		cout << "Сортировка:" << endl ;
+		int tmp;
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++)
+				std::cout << " " << A[i][j];
+		}
+
+		
+
+		cout << endl;
+		for (int i = 0; i < N; i++)
+			delete[] A[i];
+		delete[] A;
 		
 		system("pause");
 		return 0;
@@ -47,6 +62,9 @@ int main(int argc, char* argv[])
 		system("pause");
 		return 0;
 	}
+
  
 	
 }
+
+
