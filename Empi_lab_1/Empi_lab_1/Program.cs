@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-
+// ЕМПИ Разработал Кудря Герман група ЗПЗС-1444
 namespace Empi_lab_1
 {
     class Program
@@ -22,7 +22,7 @@ namespace Empi_lab_1
                 for (j = 0; j < 10; j++)
                 {
                    
-                        arr[l] = array[i, j];
+                        arr[l] = array[i, j]; //перевод в одинарный масив
                         l++;
                         Console.Write("{0}\t", array[i,j]);
                                            
@@ -34,7 +34,7 @@ namespace Empi_lab_1
             Array.Sort(arr);
             foreach (var item in arr)
             Console.Write(item);
-
+            // Подсчет повторений елементов масива
             int Count = 0;
 
             for (int i = 0; i < arr.Length; i++)
@@ -50,6 +50,7 @@ namespace Empi_lab_1
                 Count = 0;
                 
             }
+            //Среднее арифметическое строки
             float c = 0;
             float d = 0;
             for (int i = 0; i < 4; i++)
@@ -64,6 +65,7 @@ namespace Empi_lab_1
             }
             Console.WriteLine();
 
+            //Среднее арифметическое столбца
             c = 0;
             d = 0;
             for (int i = 0; i < 10; i++)
@@ -77,6 +79,7 @@ namespace Empi_lab_1
                 Console.WriteLine("Среднее арифметическое {0} столбца = {1}", i + 1, d);
             }
 
+            //Медиана
             double h = 0;
             for (int i = 0; i < arr.Length; i++)
             { Array.Sort(arr);
@@ -89,9 +92,9 @@ namespace Empi_lab_1
             }
             Console.WriteLine("Медиана = {0}", h);
 
-
+            //Мода масива 
             int max = arr[0];
-             int cmax = 0, rmax = 0;
+            int cmax = 0, rmax = 0;
             for (int i = 0; i < arr.Length; i++)
             {
                 if (cmax > rmax)
@@ -105,11 +108,22 @@ namespace Empi_lab_1
                         cmax++;
             }
             Console.WriteLine("Мода масива {0} количество повторений = {1}", max, rmax);
+            double MatOj = 0;
+            double Disp = 0;
+            //Дисперсия
+            for (int i = 0; i < arr.Length; i++)
+                MatOj = arr[i] + MatOj;
+            MatOj = MatOj / arr.Length;
 
+            for (int i = 0; i < arr.Length; i++)
+                Disp = Math.Pow((arr[i] - MatOj), 2) + Disp;
+            Disp = Disp / arr.Length;
 
+            Console.WriteLine("Дисперсия масива = {0}", Disp);
+            // Отклонение
+            Console.WriteLine("Среднее квадратическое отклонение = {0}", Math.Sqrt(Disp));
             Console.ReadLine();
-            
-            
+                    
         }
        
     }
