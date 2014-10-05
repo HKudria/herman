@@ -8,6 +8,7 @@ using namespace std;
 
 
 
+
 int main(int argc, char* argv[])
 {
 	int vubor;
@@ -46,7 +47,24 @@ int main(int argc, char* argv[])
 			for (int j = 0; j < 5; j++)
 				std::cout << " " << A[i][j];
 		}
+		cout << "\n";
+		for (int k = 0; k < N; k++)
+		{
+			for (int i = 0; i < N; i++)
+			{
+				for (int j = N - 1; j > i; j--)
+				if (A[k][j] < A[k][j - 1])
+				{
+					int tmp = A[k][j];
+					A[k][j] = A[k][j - 1];
+					A[k][j - 1] = tmp;
+				}
+				cout << A[k][i] << " ";
+			}
+			cout << "\n";
+		}
 
+		
 		
 
 		cout << endl;
